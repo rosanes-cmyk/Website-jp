@@ -14,7 +14,7 @@
     var(--washi);
 }
 @media (min-width: 900px) {
-  .hero { padding-block: var(--space-9); min-height: min(88vh, 760px); display: flex; align-items: center; }
+  .hero { padding-block: var(--space-9); min-height: min(88vh, 760px); min-height: min(88svh, 760px); display: flex; align-items: center; }
 }
 
 /* Reserved for the Phase 3 particle canvas (sakura + maple) */

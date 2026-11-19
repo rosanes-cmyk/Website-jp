@@ -1,4 +1,12 @@
 # Netlify redirects: old site URLs -> new pages (301 = permanent).
+
+# Internal files: never serve these publicly (the "!" forces the rule even though the file exists).
+/PLAN.md         /404.html    404!
+/README.md       /404.html    404!
+/RESEARCH.md     /404.html    404!
+/netlify.toml    /404.html    404!
+/data/*          /404.html    404!
+
 # The old site was a Wix site (rqkfernandes.wixsite.com/maplesakura) with these paths.
 # They only take effect if the old domain points at this Netlify site.
 # TODO: confirm the old Maple Village School URLs (maplevillageschool.com) and add them here.

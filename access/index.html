@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <!-- JP-REVIEW --><title>アクセス・お問い合わせ（つくば市学園南）｜メイプルサクラスクール</title>
   <!-- JP-REVIEW --><meta name="description" content="メイプルサクラスクールへのアクセスとお問い合わせ。つくば市学園南3丁目、葛城小学校の裏にあり駐車場もあります。研究学園駅からの行き方、地図、電話・メール・LINE、無料体験レッスンの予約フォームをご案内します。"><!-- TODO: confirm all facts in this description -->
+  <meta name="format-detection" content="telephone=no"><!-- iPhone: only the real tel: links are tappable -->
   <meta name="theme-color" content="#274060">
   <link rel="icon" href="/assets/svg/maple-leaf.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/og/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
   <link rel="canonical" href="https://maplesakuraschool.com/access/"><!-- TODO: confirm domain -->
   <link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/access/">
   <link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/access/">
@@ -28,8 +30,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;family=Nunito:wght@400;700&amp;family=Shippori+Mincho:wght@500&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" media="print" data-font-css>
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;family=Nunito:wght@400;700&amp;family=Shippori+Mincho:wght@500&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap"></noscript>
+  <link rel="preload" href="/assets/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;display=optional" media="print" data-font-css>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" media="print" data-font-css>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;display=optional"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap"></noscript>
 
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/layout.css">
@@ -40,6 +44,7 @@
   <script src="/js/main.js" defer></script>
   <script src="/js/reveal.js" defer></script>
   <script src="/js/transitions.js" defer></script>
+  <script src="/js/chat.js" defer></script>
   <script src="/js/pages/access.js" defer></script>
 
   <!-- TODO: confirm structured data (hours, geo, sameAs) once the owner confirms -->
@@ -66,12 +71,6 @@
     "streetAddress": "学園南3丁目70-16",
     "addressCountry": "JP"
   },
-  "openingHoursSpecification": [{
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    "opens": "15:00",
-    "closes": "20:00"
-  }],
   "priceRange": "¥5,500–¥11,000",
   "founder": { "@id": "https://maplesakuraschool.com/about/#teacher" }
 },
@@ -375,7 +374,7 @@
         </div>
 
         <div class="trial-booking__form">
-          <form class="form trial-form" name="trial" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/access/?sent=1#trial"
+          <form class="form trial-form" name="trial" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/access/thanks/"
                 data-msg-ok="お申し込みありがとうございます。内容を確認のうえ、教室からご連絡いたします。"
                 data-msg-required="入力してください。"
                 data-msg-email="メールアドレスの形式で入力してください（例：name@example.com）。"
@@ -453,8 +452,8 @@
             </div>
 
             <div class="form__row consent">
-              <!-- TODO: confirm privacy wording; link a privacy policy page once it exists -->
-              <p class="consent__note" id="f-consent-note">ご入力いただいた個人情報は、体験レッスンのご案内とお問い合わせへの回答のためにのみ使用し、ご本人の同意なく第三者に提供することはありません。</p>
+              <!-- TODO: confirm privacy wording -->
+              <p class="consent__note" id="f-consent-note">ご入力いただいた個人情報は、体験レッスンのご案内とお問い合わせへの回答のためにのみ使用し、ご本人の同意なく第三者に提供することはありません。詳しくは<a href="/privacy/">プライバシーポリシー</a>をご覧ください。</p>
               <label class="form__choice consent__choice">
                 <input type="checkbox" id="f-consent" name="consent" value="同意する" required
                        aria-describedby="f-consent-note f-consent-err" data-error="f-consent-err"
@@ -513,6 +512,7 @@
             <li><a href="/gallery/">ギャラリー</a></li>
             <li><a href="/access/">アクセス・お問い合わせ</a></li>
             <li><a href="/news/">お知らせ・FAQ</a></li>
+            <li><a href="/privacy/">プライバシーポリシー</a></li>
             <li><a href="/en/" hreflang="en" lang="en">English</a></li>
           </ul>
         </nav>

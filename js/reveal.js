@@ -50,6 +50,12 @@
       var original = el.textContent.trim();
       var target = parseInt(original.replace(/[^\d]/g, ''), 10);
       if (!target) return;
+      // Screen readers get the real price, never a number mid-count
+      var real = document.createElement('span');
+      real.className = 'visually-hidden';
+      real.textContent = original;
+      el.parentNode.insertBefore(real, el);
+      el.setAttribute('aria-hidden', 'true');
       // Lock the width so the count never shifts the layout
       el.style.display = 'inline-block';
       el.style.minWidth = el.getBoundingClientRect().width + 'px';
@@ -65,7 +71,7 @@
         var eased = 1 - Math.pow(1 - p, 3);
         el.textContent = format(Math.round(target * eased), original);
         if (p < 1) requestAnimationFrame(step);
-        else el.textContent = original;
+        else { el.textContent = original; el.removeAttribute('aria-hidden'); real.remove(); }
       };
       requestAnimationFrame(step);
     };
@@ -101,7 +107,17 @@
           }
         });
       };
-      walk(heading);
+      // Screen readers read the heading as words, not letter by letter
+      var label = heading.textContent.replace(/\s+/g, ' ').trim();
+      var wrap = document.createElement('span');
+      wrap.setAttribute('aria-hidden', 'true');
+      while (heading.firstChild) wrap.appendChild(heading.firstChild);
+      heading.appendChild(wrap);
+      walk(wrap);
+      var spoken = document.createElement('span');
+      spoken.className = 'visually-hidden';
+      spoken.textContent = label;
+      heading.appendChild(spoken);
       heading.classList.add('is-split');
     });
   }

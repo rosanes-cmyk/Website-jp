@@ -111,6 +111,7 @@
 
 /* ---------- Lightbox (extends components.css .lightbox) ---------- */
 .gallery-lightbox { --lb-h: min(62vh, 620px); }
+@supports (height: 1dvh) { .gallery-lightbox { --lb-h: min(62dvh, 620px); } }
 .gallery-lightbox .lightbox__media {
   display: grid;
   place-items: center;

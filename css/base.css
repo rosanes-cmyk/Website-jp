@@ -99,6 +99,7 @@ ul[role="list"], ol[role="list"] { list-style: none; padding: 0; }
 
 body {
   min-height: 100vh;
+  min-height: 100svh;
   background: var(--washi);
   color: var(--sumi);
   font-family: var(--font-body);
@@ -126,6 +127,30 @@ a:hover { color: var(--maple-dark); }
   border-radius: 4px;
 }
 
+/* ---------- Web fonts ----------
+   Nunito (English) is served from this site and preloaded in every page's <head>,
+   so it is ready before text first appears: no jump when it arrives.
+   Japanese fonts come from Google Fonts (see the <head> of each page):
+   - Noto Sans JP (body) uses display=optional: if it is not ready almost at once,
+     the phone's own Japanese font is used for that page (it looks nearly the same)
+     and the web font is cached for the next page. Body text never jumps.
+   - Zen Maru Gothic (headings) and Shippori Mincho (accents) use display=swap. */
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/assets/fonts/nunito-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* English pages: Nunito everywhere (headings, buttons, body) for one consistent look.
+   Japanese words on English pages fall back to Noto Sans JP. */
+html:lang(en) {
+  --font-heading: var(--font-en);
+  --font-body: var(--font-en);
+}
+
 /* ---------- Typography ---------- */
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
@@ -145,10 +170,12 @@ p + p { margin-top: 1em; }
 
 small { font-size: var(--fs-xs); }
 
-:lang(en), .en {
+/* English words inside Japanese pages */
+[lang="en"]:not(html), .en {
   font-family: var(--font-en);
   letter-spacing: 0.01em;
 }
+html:lang(en) body { letter-spacing: 0.01em; }
 
 .mincho { font-family: var(--font-mincho); font-weight: 500; }
 

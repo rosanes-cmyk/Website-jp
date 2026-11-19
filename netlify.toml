@@ -1,0 +1,5 @@
+# Netlify settings. The site is plain files: no build command.
+# Redirects live in _redirects and response headers in _headers.
+[build]
+  publish = "."
+  command = ""

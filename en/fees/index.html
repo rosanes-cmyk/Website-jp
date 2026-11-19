@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>English Lesson Fees in Tsukuba | Maple Sakura School</title>
   <meta name="description" content="English lesson fees in Tsukuba: kids and adult group classes ¥11,000/month (tax incl.), private lessons ¥5,500, enrolment fee, payment rules, free trial."><!-- TODO: confirm all facts in this description -->
+  <meta name="format-detection" content="telephone=no"><!-- iPhone: only the real tel: links are tappable -->
   <meta name="theme-color" content="#274060">
   <link rel="icon" href="/assets/svg/maple-leaf.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/og/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
   <link rel="canonical" href="https://maplesakuraschool.com/en/fees/"><!-- TODO: confirm domain -->
   <link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/fees/">
   <link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/fees/">
@@ -28,8 +30,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;family=Nunito:wght@400;700&amp;family=Shippori+Mincho:wght@500&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" media="print" data-font-css>
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;family=Nunito:wght@400;700&amp;family=Shippori+Mincho:wght@500&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap"></noscript>
+  <link rel="preload" href="/assets/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;display=optional" media="print" data-font-css>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" media="print" data-font-css>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;display=optional"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap"></noscript>
 
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/layout.css">
@@ -40,6 +44,7 @@
   <script src="/js/main.js" defer></script>
   <script src="/js/reveal.js" defer></script>
   <script src="/js/transitions.js" defer></script>
+  <script src="/js/chat.js" defer></script>
 
   <!-- TODO: confirm all prices in the OfferCatalog below -->
   <!-- TODO: confirm structured data (hours, geo, sameAs) once the owner confirms -->
@@ -66,12 +71,6 @@
     "streetAddress": "学園南3丁目70-16",
     "addressCountry": "JP"
   },
-  "openingHoursSpecification": [{
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    "opens": "15:00",
-    "closes": "20:00"
-  }],
   "priceRange": "¥5,500–¥11,000",
   "founder": { "@id": "https://maplesakuraschool.com/about/#teacher" }
 },
@@ -491,6 +490,7 @@
             <li><a href="/en/gallery/">Gallery</a></li>
             <li><a href="/en/access/">Access &amp; Contact</a></li>
             <li><a href="/en/news/">News &amp; FAQ</a></li>
+            <li><a href="/en/privacy/">Privacy Policy</a></li>
             <li><a href="/" hreflang="ja" lang="ja">日本語</a></li>
           </ul>
         </nav>

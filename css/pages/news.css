@@ -28,7 +28,7 @@
   text-decoration: none;
   transition: background-color 0.2s, border-color 0.2s;
 }
-.news-jump a:hover { background: var(--indigo-soft); border-color: var(--indigo); }
+@media (hover: hover) { .news-jump a:hover { background: var(--indigo-soft); border-color: var(--indigo); } }
 
 /* ---------- News posts ---------- */
 .news-posts { border-top: 0; display: grid; gap: var(--space-4); }
