@@ -200,7 +200,10 @@
 }
 /* The header CTA only fits on wide screens; the hero and bottom bar cover the rest */
 @media (min-width: 1360px) {
-  .btn.header-cta { display: inline-flex; }
+  .btn.header-cta { display: inline-flex; flex: none; white-space: nowrap; }
+  /* Give the header 120px more room than the page content so the Japanese
+     menu and the trial button fit on one line */
+  .site-header > .container { max-width: calc(var(--container) + 120px + var(--gutter) * 2); }
 }
 
 /* ---------- Footer ---------- */
