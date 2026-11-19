@@ -1,0 +1,194 @@
+/* =========================================================
+   base.css — reset, design tokens, typography, seasons
+   Maple Sakura School / メイプルサクラスクール
+   ========================================================= */
+
+/* ---------- Design tokens ---------- */
+:root {
+  /* Brand colours (PLAN.md section 3) */
+  --washi: #FAF7F2;   /* page background */
+  --sumi: #2B2B2B;    /* body text (13.6:1 on washi) */
+  --maple: #C8442B;   /* buttons (white text 4.9:1) */
+  --sakura: #F4C9D1;  /* soft fills */
+  --indigo: #274060;  /* headings, footer (10.6:1 on washi) */
+
+  /* Derived shades (kept within the same five hues) */
+  --maple-dark: #A5361F;   /* button hover, maple text on light bg (6.6:1) */
+  --sakura-soft: #FBEAED;  /* very light sakura panels */
+  --indigo-soft: #E9EDF3;  /* light indigo panels */
+  --sumi-muted: #595959;   /* secondary text (6.6:1 on washi) */
+  --line-colour: #E3DCD2;  /* hairlines on washi */
+  --white: #FFFFFF;
+  --line-green: #06C755;   /* LINE brand green; use with --sumi text (6.3:1) */
+
+  /* Seasonal accent: overridden by body.season-* (set by the deferred main.js).
+     The default is a neutral washi tint so the switch after first paint is subtle
+     in every season (only colours change, never layout). */
+  --season-accent: #EFE7DC;
+  --season-accent-soft: #F4EEE6;
+
+  /* Type */
+  --font-body: "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  --font-heading: "Zen Maru Gothic", "Noto Sans JP", "Hiragino Maru Gothic ProN", sans-serif;
+  --font-mincho: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-en: "Nunito", "Noto Sans JP", system-ui, sans-serif;
+
+  --fs-xs: 0.8125rem;                          /* 13px */
+  --fs-sm: 0.9375rem;                          /* 15px */
+  --fs-base: 1rem;                             /* 16px */
+  --fs-md: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  --fs-lg: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --fs-xl: clamp(1.5rem, 1.25rem + 1.1vw, 2.125rem);
+  --fs-hero: clamp(1.875rem, 1.4rem + 2.4vw, 3.25rem);
+
+  --lh-body: 1.85;   /* Japanese body text needs generous leading */
+  --lh-tight: 1.4;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: 6.5rem;
+
+  --gutter: 16px;            /* mobile side gutter */
+  --container: 1120px;
+  --container-narrow: 760px;
+
+  --radius-sm: 6px;
+  --radius: 14px;
+  --radius-lg: 24px;
+  --shadow: 0 2px 4px rgb(39 64 96 / 0.06), 0 8px 24px rgb(39 64 96 / 0.08);
+  --shadow-lift: 0 6px 12px rgb(39 64 96 / 0.08), 0 18px 40px rgb(39 64 96 / 0.12);
+
+  --header-h: 64px;
+  --bottom-bar-h: 64px;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@media (min-width: 768px) {
+  :root { --gutter: 24px; --header-h: 76px; }
+}
+
+/* ---------- Seasons (body class set by js/main.js from the month) ---------- */
+.season-spring { --season-accent: var(--sakura);  --season-accent-soft: var(--sakura-soft); }
+.season-summer { --season-accent: #CFE3E8;        --season-accent-soft: #EEF5F7; }
+.season-autumn { --season-accent: #F2C6B8;        --season-accent-soft: #FBEDE7; }
+.season-winter { --season-accent: #D9DFEA;        --season-accent-soft: var(--indigo-soft); }
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + var(--space-4));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body, h1, h2, h3, h4, p, figure, blockquote, dl, dd, ul, ol { margin: 0; }
+ul[role="list"], ol[role="list"] { list-style: none; padding: 0; }
+
+body {
+  min-height: 100vh;
+  background: var(--washi);
+  color: var(--sumi);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+  font-feature-settings: "palt" 0;
+  overflow-wrap: anywhere;
+  line-break: strict;           /* Japanese kinsoku rules */
+  word-break: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg, video, canvas, iframe { display: block; max-width: 100%; }
+img { height: auto; }
+
+input, button, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+
+a { color: var(--indigo); text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+a:hover { color: var(--maple-dark); }
+
+:focus-visible {
+  outline: 3px solid var(--maple);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  color: var(--indigo);
+  letter-spacing: 0.02em;
+  word-break: auto-phrase;   /* break Japanese headings between phrases (Chrome 119+) */
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--fs-hero); }
+h2 { font-size: var(--fs-xl); }
+h3 { font-size: var(--fs-lg); }
+
+p + p { margin-top: 1em; }
+
+small { font-size: var(--fs-xs); }
+
+:lang(en), .en {
+  font-family: var(--font-en);
+  letter-spacing: 0.01em;
+}
+
+.mincho { font-family: var(--font-mincho); font-weight: 500; }
+
+/* ---------- Utilities ---------- */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 1000;
+  padding: var(--space-2) var(--space-4);
+  background: var(--indigo);
+  color: var(--white);
+  border-radius: var(--radius-sm);
+  transform: translateY(-200%);
+}
+.skip-link:focus { transform: none; color: var(--white); }
+
+.nowrap { white-space: nowrap; }
+.phrase { display: inline-block; }   /* keeps a Japanese phrase on one line */
+.text-center { text-align: center; }
+
+/* Placeholder text the owner must confirm: visibly highlighted during review.
+   Remove the highlight (or the class) once every value is confirmed. */
+.tbd {
+  background: linear-gradient(transparent 55%, #FFE9A8 55%);
+  padding-inline: 0.1em;
+}
+.site-footer .tbd, .trial .tbd {
+  background: none;
+  border-bottom: 2px dashed #FFE9A8;
+}
+
+a[href^="tel:"], a[href^="mailto:"] { white-space: nowrap; }

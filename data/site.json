@@ -1,0 +1,118 @@
+{
+  "_note": "Single source of truth for business facts. EVERY value below is a placeholder from the old site until the owner confirms it (see PLAN.md section 8). When a value changes here, update the same text in the HTML footer and pages too, so pages keep working without JavaScript.",
+  "confirmed": false,
+  "name": {
+    "en": "Maple Sakura School",
+    "ja": "メイプルサクラスクール",
+    "ja_alternative": "メープルさくらスクール",
+    "_todo": "Owner must choose the official Japanese spelling."
+  },
+  "formerName": {
+    "en": "Maple Village School",
+    "ja": "メイプルヴィレッジスクール"
+  },
+  "founded": 2013,
+  "address": {
+    "postalCode": "305-0818",
+    "ja": "茨城県つくば市学園南3丁目70-16",
+    "jaNote": "葛城小学校の裏・駐車場あり",
+    "en": "3-70-16 Gakuenminami, Tsukuba, Ibaraki 305-0818",
+    "enNote": "Behind Katsuragi Elementary School, parking available",
+    "region": "Ibaraki",
+    "locality": "Tsukuba",
+    "country": "JP",
+    "geo": { "lat": null, "lng": null, "_todo": "Fill in after confirming the pin on Google Maps." }
+  },
+  "phone": { "display": "029-851-0555", "tel": "+81298510555", "fax": "029-851-0555" },
+  "email": "info@maplesakuraschool.com",
+  "domain": "https://maplesakuraschool.com",
+  "openingHours": null,
+  "reopeningDate": null,
+  "social": { "line": null, "instagram": null, "facebook": null },
+  "teacher": {
+    "nameEn": "Tom Sensei",
+    "nameJa": "トム先生",
+    "origin": "Canada",
+    "credentials": [
+      "Master's degree in education",
+      "10 years teaching English in Japanese elementary and junior high schools"
+    ]
+  },
+  "philosophy": {
+    "en": "English fun and easy for everyone",
+    "ja": "誰でも英語を楽しく簡単に",
+    "statement": {
+      "en": "Each student is a unique maple leaf that grows to its own height.",
+      "ja": "もみじの葉は一枚一枚かたちが違い、それぞれの高さまで育ちます。生徒さんも同じです。"
+    }
+  },
+  "taxRate": 0.1,
+  "_priceNote": "Japan requires tax-inclusive (総額表示) prices. 'price' is before tax; 'priceInclTax' is what pages display.",
+  "programs": [
+    {
+      "id": "kids",
+      "nameEn": "Kids English Club",
+      "nameJa": "キッズイングリッシュクラブ",
+      "audience": "Age 3 to high school",
+      "schedule": "Mon–Sat 15:00–20:00",
+      "classSize": "4–5",
+      "lessonMinutes": 50,
+      "price": 10000,
+      "priceInclTax": 11000,
+      "unit": "month",
+      "lessonsPerUnit": 4
+    },
+    {
+      "id": "advanced",
+      "nameEn": "Advanced English Club",
+      "nameJa": "上級英語サークル",
+      "audience": "Adults: academic and business English",
+      "schedule": "Mon–Sat, hours to confirm",
+      "classSize": "4–5",
+      "lessonMinutes": 50,
+      "price": 10000,
+      "priceInclTax": 11000,
+      "unit": "month",
+      "lessonsPerUnit": 4
+    },
+    {
+      "id": "private",
+      "nameEn": "Private Tutoring",
+      "nameJa": "英語の個人指導",
+      "audience": "Test prep, presentations, speeches",
+      "eikenPrep": null,
+      "schedule": "Mon–Sat, hours to confirm",
+      "classSize": "1",
+      "lessonMinutes": 60,
+      "price": 5000,
+      "priceInclTax": 5500,
+      "unit": "session",
+      "lessonsPerUnit": 1
+    },
+    {
+      "id": "delivery",
+      "nameEn": "Teacher Delivery",
+      "nameJa": "講師派遣",
+      "audience": "Schools and kindergartens in Ibaraki and Kanto",
+      "schedule": "Mon–Sat 9:00–16:00",
+      "classSize": "up to 50",
+      "lessonMinutes": "60+",
+      "price": null,
+      "priceInclTax": null,
+      "unit": "on request",
+      "lessonsPerUnit": null
+    }
+  ],
+  "terms": {
+    "trialLessonMinutes": 30,
+    "trialLessonFree": true,
+    "trialIsPlacementTest": true,
+    "prepayMonths": 3,
+    "enrolmentFee": 10000,
+    "enrolmentFeeInclTax": 11000,
+    "enrolmentFeeCovers": "materials and space",
+    "groupReschedule": false,
+    "withdrawalNoticeMonths": 1,
+    "lateWithdrawalCharge": "one extra month (per old site; confirm)"
+  }
+}
