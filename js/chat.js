@@ -36,7 +36,7 @@
 
   // [question, answer, link]
   var QA = en ? [
-    ['How much are lessons?', 'Group classes (Kids English Club and Advanced English Club) are ¥11,000 a month including tax, for 4 lessons. Private tutoring is ¥5,500 per 60-minute lesson. The enrolment fee is ¥11,000, paid once. Monthly fees are paid 3 months in advance.', '/fees/'],
+    ['How much are lessons?', 'Group classes (Kids English Club and Advanced English Club) are ¥11,000 a month including tax, for 4 lessons. Private tutoring is ¥5,500 (tax incl.) per 60-minute lesson. The enrolment fee is ¥11,000 (tax incl.), paid once. Monthly fees are paid 3 months in advance.', '/fees/'],
     ['Is there a free trial?', 'Yes. The trial lesson is free and takes 30 minutes. It also works as a level check, so we can suggest the right class. Book with the form or by phone.', '/access/#trial'],
     ['Which classes are there?', 'Four programs: Kids English Club (age 3 to high school), Advanced English Club (adults), Private Tutoring, and Teacher Delivery for schools and kindergartens. Group classes have only 4–5 students.', '/programs/'],
     ['What days and times?', 'Kids English Club runs Monday to Saturday, 15:00–20:00. Times for the adult class and private tutoring are still being confirmed.', '/programs/'],
@@ -147,7 +147,10 @@
   };
   launcher.addEventListener('click', function () { setOpen(panel.hidden); });
   close.addEventListener('click', function () { setOpen(false); launcher.focus(); });
+  // Escape closes the chat only when the visitor is in it (not the menu or lightbox)
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && !panel.hidden) { setOpen(false); launcher.focus(); }
+    if (e.key !== 'Escape' || panel.hidden || e.defaultPrevented || !root.contains(document.activeElement)) return;
+    setOpen(false); launcher.focus();
   });
+  document.addEventListener('menu:open', function () { setOpen(false); });
 })();

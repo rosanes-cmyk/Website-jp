@@ -21,7 +21,7 @@
   text-decoration: none;
   transition: background-color 0.2s, border-color 0.2s;
 }
-.fees-jump a:hover { background: var(--indigo-soft); border-color: var(--indigo); }
+@media (hover: hover) { .fees-jump a:hover { background: var(--indigo-soft); border-color: var(--indigo); } }
 
 /* Anchor targets clear the sticky header */
 .page-fees [id] { scroll-margin-top: calc(var(--header-h) + var(--space-4)); }

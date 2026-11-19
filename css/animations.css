@@ -98,4 +98,7 @@
   /* Keep simple fades, drop movement */
   .js .reveal { transform: none; transition: opacity 0.4s linear; }
   .split-char { animation: none; }
+  .global-nav, .menu-toggle__bars, .menu-toggle__bars::before, .menu-toggle__bars::after,
+  .global-nav__link::after, .accordion__summary::after, .chat__launcher { transition: none !important; }
+  .chat__launcher:hover { transform: none; }
 }

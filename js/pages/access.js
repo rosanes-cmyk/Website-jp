@@ -75,6 +75,11 @@
       if (first && first.getAttribute('aria-invalid')) check(first);
     });
   });
+  // Coming back with the browser's Back button: reset the button
+  var idleLabel = submitLabel.textContent;
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) { submit.disabled = false; submitLabel.textContent = idleLabel; }
+  });
   form.addEventListener('submit', function (e) {
     var firstBad = null;
     each(fields, function (el) {
@@ -101,6 +106,8 @@
       submitLabel.textContent = label;
       showOk(true);
     }).catch(function () {
+      submit.disabled = false;
+      submitLabel.textContent = label;
       form.submit(); // fall back to a normal submit
     });
   });

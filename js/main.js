@@ -41,7 +41,7 @@
 
     // While the drawer is open, everything outside it (except the toggle) is inert,
     // so Tab cannot reach links hidden behind the backdrop.
-    var outside = document.querySelectorAll('main, .site-footer, .bottom-bar, .brand, .lang-switch, .header-cta');
+    var outside = document.querySelectorAll('.skip-link, main, .site-footer, .bottom-bar, .brand, .lang-switch, .header-cta');
 
     var setOpen = function (open, returnFocus) {
       nav.classList.toggle('is-open', open);
@@ -51,6 +51,7 @@
       if (label) label.textContent = open ? (root.lang === 'en' ? 'Close' : '閉じる')
                                           : (root.lang === 'en' ? 'Menu' : 'メニュー');
       if (open) {
+        document.dispatchEvent(new CustomEvent('menu:open')); // chat.js closes itself
         var first = nav.querySelector('a');
         if (first) first.focus({ preventScroll: true });
       } else if (returnFocus) {
@@ -67,7 +68,7 @@
     });
     if (backdrop) backdrop.addEventListener('click', function () { setOpen(false); });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && nav.classList.contains('is-open')) setOpen(false, true);
+      if (e.key === 'Escape' && nav.classList.contains('is-open')) { e.preventDefault(); setOpen(false, true); }
     });
     nav.addEventListener('click', function (e) {
       if (e.target.closest('a')) setOpen(false);

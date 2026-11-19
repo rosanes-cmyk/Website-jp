@@ -88,7 +88,7 @@
 }
 .lang-switch [aria-current="true"] { background: var(--indigo); color: var(--white); }
 .lang-switch a { color: var(--indigo); }
-.lang-switch a:hover { background: var(--indigo-soft); }
+@media (hover: hover) { .lang-switch a:hover { background: var(--indigo-soft); } }
 
 /* Menu toggle: an anchor to the footer nav without JS; a drawer toggle with JS */
 .menu-toggle {
@@ -274,7 +274,7 @@
   font-size: var(--fs-xs);
   font-weight: 700;
 }
-.footer-social a:hover { background: rgb(255 255 255 / 0.1); }
+@media (hover: hover) { .footer-social a:hover { background: rgb(255 255 255 / 0.1); } }
 
 .site-footer__bottom {
   margin-top: var(--space-7);
