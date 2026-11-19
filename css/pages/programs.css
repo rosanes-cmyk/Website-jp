@@ -1,0 +1,275 @@
+/* =========================================================
+   programs.css — Programs page (/programs/ and /en/programs/)
+   Dense: overview cards with age filter, then one section per
+   program (spec list + sample lesson flow).
+   Signature motion: cards flip on hover / tap; the age filter
+   fades non-matching cards out and slides the rest into place
+   (js/pages/programs.js). Only transform and opacity animate.
+   ========================================================= */
+
+/* ---------- Hero ---------- */
+.page-hero__sub {
+  display: block;
+  margin-top: var(--space-2);
+  font-size: var(--fs-md);
+  font-weight: 500;
+  color: var(--maple-dark);
+  letter-spacing: 0.06em;
+}
+
+/* ---------- Age filter (rendered only with JS) ---------- */
+.pfilter { margin-bottom: var(--space-6); }
+.pfilter[hidden] { display: none; }
+.pfilter__label {
+  margin-bottom: var(--space-2);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--indigo);
+}
+
+/* ---------- Program cards ---------- */
+.pgrid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-5);
+}
+@media (min-width: 600px) { .pgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .pgrid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+.pcard { display: flex; flex-direction: column; perspective: 1200px; min-width: 0; }
+.pcard[hidden] { display: none; }
+
+.pcard__inner {
+  flex: 1;
+  background: var(--white);
+  border: 1px solid var(--line-colour);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.pcard__face {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+/* Without JS both faces are simply stacked in one card */
+.pcard__face--back { border-top: 1px dashed var(--line-colour); }
+
+.pcard__who {
+  margin-top: var(--space-2);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--indigo);
+}
+.pcard__text { margin-top: var(--space-2); font-size: var(--fs-sm); flex: 1; }
+.pcard__price {
+  margin-top: var(--space-4);
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--maple-dark);
+}
+.pcard__price small { font-size: var(--fs-xs); font-weight: 700; color: var(--sumi-muted); }
+.pcard__back-title { font-family: var(--font-heading); font-weight: 700; color: var(--indigo); }
+.pcard__face--back .card__meta { margin-top: var(--space-3); flex: 1; align-content: start; }
+.pcard__more { margin-top: var(--space-4); font-weight: 700; }
+.pcard__more a { display: inline-flex; align-items: center; min-height: 44px; }
+
+.pcard__flip {
+  align-self: center;
+  min-height: 44px;
+  margin-top: var(--space-3);
+  padding: 0 var(--space-4);
+  border: 1.5px solid var(--indigo);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--indigo);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+}
+.pcard__flip[aria-pressed="true"] { background: var(--indigo); color: var(--white); }
+.pcard__flip[hidden] { display: none; }
+/* The tap button is only needed where hover is not available */
+@media (hover: hover) and (pointer: fine) { .pcard__flip { display: none; } }
+
+/* With JS: faces share one grid cell; the back is rotated away */
+.js .pcard__inner {
+  display: grid;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  transform-style: preserve-3d;
+  transition: transform 0.6s var(--ease);
+}
+.js .pcard__face {
+  grid-area: 1 / 1;
+  border: 1px solid var(--line-colour);
+  box-shadow: var(--shadow);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.js .pcard__face--back {
+  transform: rotateY(180deg);
+  background: var(--indigo-soft);
+  pointer-events: none;
+}
+
+/* Flipped state: tap button (aria-pressed), hover, or keyboard focus on a back-face link */
+.js .pcard.is-flipped .pcard__inner,
+.js .pcard:has(.pcard__face--back a:focus-visible) .pcard__inner { transform: rotateY(180deg); }
+.js .pcard.is-flipped .pcard__face--back,
+.js .pcard:has(.pcard__face--back a:focus-visible) .pcard__face--back { pointer-events: auto; }
+.js .pcard.is-flipped .pcard__face--front { pointer-events: none; }
+
+@media (hover: hover) and (pointer: fine) {
+  .js .pcard:hover .pcard__inner { transform: rotateY(180deg); }
+  .js .pcard:hover .pcard__face--back { pointer-events: auto; }
+  .js .pcard:hover .pcard__face--front { pointer-events: none; }
+}
+
+/* Filter motion states (set by programs.js) */
+.pcard.is-leaving {
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+/* ---------- Program detail sections ---------- */
+.program__grid { display: grid; gap: var(--space-6); align-items: start; }
+@media (min-width: 900px) { .program__grid { grid-template-columns: 1.15fr 0.85fr; gap: var(--space-8); } }
+
+.program__title { font-size: var(--fs-xl); }
+.program__name {
+  display: block;
+  margin-top: var(--space-1);
+  font-size: var(--fs-md);
+  font-weight: 500;
+  color: var(--maple-dark);
+}
+.program__lead { margin-top: var(--space-4); }
+.program__cta { margin-top: var(--space-5); }
+
+.spec {
+  margin-top: var(--space-5);
+  background: var(--white);
+  border: 1px solid var(--line-colour);
+  border-radius: var(--radius);
+  font-size: var(--fs-sm);
+}
+.section--white .spec { background: var(--washi); }
+.spec__row {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--line-colour);
+}
+.spec__row:last-child { border-bottom: 0; }
+@media (min-width: 480px) {
+  .spec__row { grid-template-columns: 8.5em minmax(0, 1fr); gap: var(--space-4); }
+}
+.spec dt { font-weight: 700; color: var(--indigo); }
+.spec dd { margin: 0; }
+.spec .tbd { margin-left: var(--space-1); }
+.spec__price { font-weight: 700; font-size: var(--fs-md); color: var(--maple-dark); }
+.spec .tax-note { display: block; color: var(--sumi-muted); font-size: var(--fs-xs); }
+
+.program__side { display: grid; gap: var(--space-5); }
+@media (max-width: 899.98px) { .program__side .ph { max-width: 480px; } }
+
+/* Sample lesson flow */
+.flow {
+  padding: var(--space-5);
+  background: var(--white);
+  border: 1px solid var(--line-colour);
+  border-radius: var(--radius);
+}
+.section--white .flow { background: var(--washi); }
+.flow__title { font-size: var(--fs-md); }
+.flow__note { margin-top: var(--space-1); font-size: var(--fs-xs); }
+.flow__list {
+  list-style: none;
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  counter-reset: flow;
+  display: grid;
+  gap: var(--space-4);
+  position: relative;
+}
+.flow__list::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--line-colour);
+}
+.flow__step {
+  position: relative;
+  padding-left: calc(32px + var(--space-3));
+  font-size: var(--fs-sm);
+  counter-increment: flow;
+}
+.flow__step::before {
+  content: counter(flow);
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--maple);
+  color: var(--white);
+  font-family: var(--font-en);
+  font-weight: 700;
+}
+.flow__step strong { display: block; color: var(--indigo); font-family: var(--font-heading); }
+
+/* ---------- Common terms + trial ---------- */
+.pterms { display: grid; gap: var(--space-6); align-items: stretch; }
+@media (min-width: 900px) { .pterms { grid-template-columns: 1.2fr 0.8fr; } }
+.pterms__body h2 { font-size: var(--fs-xl); }
+.pterms__body .note-list { margin-block: var(--space-5); }
+.pterms__body .tax-note { color: var(--sumi-muted); font-size: var(--fs-xs); }
+.pterms__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-6) var(--space-5);
+  background: var(--indigo);
+  color: var(--white);
+  border-radius: var(--radius-lg);
+}
+.pterms__cta-title { font-family: var(--font-heading); font-weight: 700; font-size: var(--fs-lg); }
+.pterms__cta p { color: #E8ECF2; }
+.pterms__cta .pterms__cta-title { color: var(--white); }
+.pterms__tel { font-size: var(--fs-sm); }
+.pterms__tel a { color: var(--white); font-weight: 700; font-size: var(--fs-md); }
+
+/* ---------- Reduced motion: crossfade instead of flip, no sliding ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .js .pcard__inner,
+  .js .pcard.is-flipped .pcard__inner,
+  .js .pcard:has(.pcard__face--back a:focus-visible) .pcard__inner,
+  .js .pcard:hover .pcard__inner { transform: none; transition: none; }
+  .js .pcard__face { transition: opacity 0.3s linear; }
+  .js .pcard__face--back { transform: none; opacity: 0; }
+  .js .pcard.is-flipped .pcard__face--back,
+  .js .pcard:has(.pcard__face--back a:focus-visible) .pcard__face--back { opacity: 1; }
+  .js .pcard.is-flipped .pcard__face--front,
+  .js .pcard:has(.pcard__face--back a:focus-visible) .pcard__face--front { opacity: 0; }
+  .pcard.is-leaving { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) and (hover: hover) and (pointer: fine) {
+  .js .pcard:hover .pcard__face--back { opacity: 1; }
+  .js .pcard:hover .pcard__face--front { opacity: 0; }
+}
+
+/* Four narrow columns: keep long katakana titles from breaking mid-word */
+@media (min-width: 1100px) { .pgrid .card__title { font-size: var(--fs-md); } }

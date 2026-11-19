@@ -7,13 +7,29 @@
   <!-- JP-REVIEW --><meta name="description" content="つくば市学園南の英会話教室メイプルサクラスクール。カナダ出身のネイティブ講師が、3歳から高校生、大人の方まで4〜5名の少人数クラスで教えます。駐車場あり。30分の無料体験レッスンがあります。"><!-- TODO: confirm all facts in this description -->
   <meta name="theme-color" content="#274060">
   <link rel="icon" href="/assets/svg/maple-leaf.svg" type="image/svg+xml">
-  <link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/"><!-- TODO: confirm domain -->
+  <link rel="apple-touch-icon" href="/assets/og/apple-touch-icon.png">
+  <link rel="canonical" href="https://maplesakuraschool.com/"><!-- TODO: confirm domain -->
+  <link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/">
   <link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/">
   <link rel="alternate" hreflang="x-default" href="https://maplesakuraschool.com/">
 
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="メイプルサクラスクール">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:title" content="つくばの英会話教室｜少人数・ネイティブ講師｜メイプルサクラスクール">
+  <meta property="og:description" content="つくば市学園南の英会話教室メイプルサクラスクール。カナダ出身のネイティブ講師が、3歳から高校生、大人の方まで4〜5名の少人数クラスで教えます。駐車場あり。30分の無料体験レッスンがあります。">
+  <meta property="og:url" content="https://maplesakuraschool.com/">
+  <meta property="og:image" content="https://maplesakuraschool.com/assets/og/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="メイプルサクラスクール つくばの英会話教室">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;family=Nunito:wght@400;700&amp;family=Shippori+Mincho:wght@500&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;family=Nunito:wght@400;700&amp;family=Shippori+Mincho:wght@500&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" media="print" data-font-css>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;family=Nunito:wght@400;700&amp;family=Shippori+Mincho:wght@500&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap"></noscript>
 
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/layout.css">
@@ -22,6 +38,55 @@
   <link rel="stylesheet" href="/css/pages/home.css">
 
   <script src="/js/main.js" defer></script>
+  <script src="/js/reveal.js" defer></script>
+  <script src="/js/transitions.js" defer></script>
+  <script src="/js/petals.js" defer></script>
+
+  <!-- TODO: confirm structured data (hours, geo, sameAs) once the owner confirms -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+{
+  "@type": "LanguageSchool",
+  "@id": "https://maplesakuraschool.com/#school",
+  "name": "メイプルサクラスクール",
+  "alternateName": ["Maple Sakura School", "メープルさくらスクール", "Maple Village School"],
+  "url": "https://maplesakuraschool.com/",
+  "logo": "https://maplesakuraschool.com/assets/og/logo-512.png",
+  "image": "https://maplesakuraschool.com/assets/og/og-default.jpg",
+  "telephone": "+81-29-851-0555",
+  "email": "info@maplesakuraschool.com",
+  "foundingDate": "2013",
+  "address": {
+    "@type": "PostalAddress",
+    "postalCode": "305-0818",
+    "addressRegion": "茨城県",
+    "addressLocality": "つくば市",
+    "streetAddress": "学園南3丁目70-16",
+    "addressCountry": "JP"
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "opens": "15:00",
+    "closes": "20:00"
+  }],
+  "priceRange": "¥5,500–¥11,000",
+  "founder": { "@id": "https://maplesakuraschool.com/about/#teacher" }
+},
+{
+  "@type": "WebSite",
+  "@id": "https://maplesakuraschool.com/#website",
+  "name": "メイプルサクラスクール",
+  "alternateName": "Maple Sakura School",
+  "url": "https://maplesakuraschool.com/",
+  "inLanguage": ["ja", "en"],
+  "publisher": { "@id": "https://maplesakuraschool.com/#school" }
+}
+  ]
+}
+  </script>
 </head>
 <body class="page-home">
   <a class="skip-link" href="#main">本文へスキップ</a>
@@ -29,7 +94,7 @@
   <!-- ===================== Header ===================== -->
   <header class="site-header">
     <div class="container site-header__inner">
-      <a class="brand" href="/" aria-label="メイプルサクラスクール ホーム">
+      <a class="brand" href="/">
         <img class="brand__mark" src="/assets/svg/logo.svg" alt="" width="48" height="40">
         <span class="brand__text">
           <span class="brand__ja">メイプルサクラスクール</span><!-- TODO: confirm official Japanese spelling (メイプルサクラ / メープルさくら) -->
@@ -68,7 +133,7 @@
 
     <!-- ===================== Hero ===================== -->
     <section class="hero" aria-labelledby="hero-title">
-      <!-- Phase 3: <canvas class="hero__canvas"> with drifting sakura petals and maple leaves goes here -->
+      <canvas class="hero__canvas" aria-hidden="true"></canvas>
       <div class="container hero__inner">
         <div class="hero__text">
           <p class="hero__badge">
@@ -77,7 +142,7 @@
             <!-- JP-REVIEW --><span><span class="tbd">20XX年X月X日</span> リニューアルオープン</span>
           </p>
 
-          <h1 class="hero__title" id="hero-title">
+          <h1 class="hero__title" id="hero-title" data-split>
             <!-- JP-REVIEW --><span class="hero__title-sub">つくば市学園南の少人数英会話教室</span>
             <!-- JP-REVIEW --><span class="phrase">つくばで英会話を、</span><span class="phrase">楽しく、</span><span class="phrase">自分のペースで。</span>
           </h1>
@@ -124,9 +189,9 @@
           <!-- JP-REVIEW --><p class="section-head__lead">年齢や目的にあわせて選べるコースをご用意しています。どのコースも、まずは無料体験レッスンでレベルを確認してからご案内します。</p>
         </div>
 
-        <div class="program-grid">
+        <div class="program-grid" data-reveal-group>
           <!-- TODO: confirm every program fact on this page against PLAN.md section 1 -->
-          <article class="card">
+          <article class="card reveal">
             <div class="card__icon"><svg aria-hidden="true"><use href="/assets/svg/icons.svg#i-kids"/></svg></div>
             <h3 class="card__title">キッズイングリッシュクラブ<span class="en" lang="en">Kids English Club</span></h3>
             <!-- JP-REVIEW --><!-- TODO: confirm -->
@@ -137,10 +202,10 @@
               <dt>人数・時間</dt><dd>4〜5名・50分</dd>
               <dt>月謝</dt><dd class="card__price">11,000円（税込）/ 月4回</dd>
             </dl>
-            <p class="card__link"><a href="/programs/#kids">詳しく見る</a></p>
+            <p class="card__link"><a href="/programs/#kids">詳しく見る<span class="visually-hidden">：キッズイングリッシュクラブ</span></a></p>
           </article>
 
-          <article class="card">
+          <article class="card reveal">
             <div class="card__icon"><svg aria-hidden="true"><use href="/assets/svg/icons.svg#i-briefcase"/></svg></div>
             <h3 class="card__title">上級英語サークル<span class="en" lang="en">Advanced English Club</span></h3>
             <!-- JP-REVIEW --><p class="card__body">研究者や社会人の方のためのクラスです。学会発表やプレゼンテーション、ビジネスの場で使える英語を練習します。</p>
@@ -150,10 +215,10 @@
               <dt>人数・時間</dt><dd>4〜5名・50分</dd>
               <dt>月謝</dt><dd class="card__price">11,000円（税込）/ 月4回</dd>
             </dl>
-            <p class="card__link"><a href="/programs/#advanced">詳しく見る</a></p>
+            <p class="card__link"><a href="/programs/#advanced">詳しく見る<span class="visually-hidden">：上級英語サークル</span></a></p>
           </article>
 
-          <article class="card">
+          <article class="card reveal">
             <div class="card__icon"><svg aria-hidden="true"><use href="/assets/svg/icons.svg#i-person"/></svg></div>
             <h3 class="card__title">英語の個人指導<span class="en" lang="en">Private Tutoring</span></h3>
             <!-- JP-REVIEW --><!-- TODO: confirm whether Eiken prep is offered (PLAN section 8) -->
@@ -164,11 +229,11 @@
               <dt>人数・時間</dt><dd>1名・60分</dd>
               <dt>料金</dt><dd class="card__price">5,500円（税込）/ 1回</dd>
             </dl>
-            <p class="card__link"><a href="/programs/#private">詳しく見る</a></p>
+            <p class="card__link"><a href="/programs/#private">詳しく見る<span class="visually-hidden">：英語の個人指導</span></a></p>
           </article>
         </div>
 
-        <div class="program-extra panel">
+        <div class="program-extra panel reveal">
           <!-- JP-REVIEW --><p><strong>学校・幼稚園の皆さまへ：</strong>茨城県内・関東近郊へネイティブ講師を派遣します（月〜土 9:00〜16:00、最大50名）。<!-- TODO: confirm --></p>
           <a class="btn btn--outline btn--small" href="/programs/#delivery">講師派遣について</a>
         </div>
@@ -180,13 +245,13 @@
       <div class="container teacher">
         <p class="vertical-label" aria-hidden="true">ごあいさつ</p>
 
-        <div class="teacher__photo">
+        <div class="teacher__photo reveal">
           <div class="ph ph--portrait" role="img" aria-label="トム先生の写真（準備中）">
             <span><svg aria-hidden="true"><use href="/assets/svg/icons.svg#i-camera"/></svg>講師の写真<small>（写真をご用意ください）</small></span>
           </div>
         </div>
 
-        <div class="teacher__body">
+        <div class="teacher__body reveal">
           <p class="section-head__eyebrow" lang="en"><svg aria-hidden="true"><use href="/assets/svg/icons.svg#i-maple"/></svg>Our Teacher</p>
           <!-- TODO: confirm Tom Sensei is still the teacher, and his credentials -->
           <h2 class="teacher__name" id="teacher-title">講師 トム先生<span class="en" lang="en">Tom Sensei</span></h2>
@@ -223,7 +288,7 @@
         </div>
 
         <!-- TODO: confirm all prices and terms (PLAN.md section 8) -->
-        <div class="table-wrap">
+        <div class="table-wrap reveal">
           <table class="table table--stack">
             <caption class="visually-hidden">コース別の料金（税込）</caption>
             <thead>
@@ -303,7 +368,7 @@
             行き方・駐車場を詳しく見る
           </a>
         </div>
-        <div class="access__map">
+        <div class="access__map reveal">
           <iframe
             src="https://www.google.com/maps?q=茨城県つくば市学園南3丁目70-16&amp;hl=ja&amp;z=16&amp;output=embed"
             title="メイプルサクラスクールの地図（Googleマップ）"
@@ -318,7 +383,7 @@
     <!-- ===================== Trial CTA ===================== -->
     <section class="section section--white" aria-labelledby="trial-title">
       <div class="container">
-        <div class="trial">
+        <div class="trial reveal">
           <img class="trial__leaf" src="/assets/svg/maple-leaf.svg" alt="" width="180" height="180" loading="lazy">
           <img class="trial__petal" src="/assets/svg/sakura-petal.svg" alt="" width="120" height="120" loading="lazy">
           <!-- JP-REVIEW --><h2 id="trial-title">まずは無料体験レッスンへ</h2>

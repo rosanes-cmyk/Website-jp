@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TODO: confirm domain (maplesakuraschool.com) before launch; update lastmod when pages change -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://maplesakuraschool.com/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maplesakuraschool.com/"/>
+  </url>
+  <url>
+    <loc>https://maplesakuraschool.com/en/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maplesakuraschool.com/"/>
+  </url>
+  <url>
+    <loc>https://maplesakuraschool.com/about/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/about/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maplesakuraschool.com/about/"/>
+  </url>
+  <url>
+    <loc>https://maplesakuraschool.com/en/about/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/about/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maplesakuraschool.com/about/"/>
+  </url>
+  <url>
+    <loc>https://maplesakuraschool.com/programs/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/programs/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/programs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maplesakuraschool.com/programs/"/>
+  </url>
+  <url>
+    <loc>https://maplesakuraschool.com/en/programs/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/programs/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/programs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maplesakuraschool.com/programs/"/>
+  </url>
+  <url>
+    <loc>https://maplesakuraschool.com/fees/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/fees/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/fees/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maplesakuraschool.com/fees/"/>
+  </url>
+  <url>
+    <loc>https://maplesakuraschool.com/en/fees/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/fees/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/fees/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maplesakuraschool.com/fees/"/>
+  </url>
+  <url>
+    <loc>https://maplesakuraschool.com/gallery/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/gallery/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/gallery/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maplesakuraschool.com/gallery/"/>
+  </url>
+  <url>
+    <loc>https://maplesakuraschool.com/en/gallery/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/gallery/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/gallery/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maplesakuraschool.com/gallery/"/>
+  </url>
+  <url>
+    <loc>https://maplesakuraschool.com/access/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/access/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/access/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maplesakuraschool.com/access/"/>
+  </url>
+  <url>
+    <loc>https://maplesakuraschool.com/en/access/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/access/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/access/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maplesakuraschool.com/access/"/>
+  </url>
+  <url>
+    <loc>https://maplesakuraschool.com/news/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/news/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/news/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maplesakuraschool.com/news/"/>
+  </url>
+  <url>
+    <loc>https://maplesakuraschool.com/en/news/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/news/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/news/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maplesakuraschool.com/news/"/>
+  </url>
+</urlset>

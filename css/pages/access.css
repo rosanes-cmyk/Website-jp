@@ -1,0 +1,243 @@
+/* =========================================================
+   access.css — Access & Contact (/access/ and /en/access/)
+   Signature motion: dotted route from the station to the
+   school (opacity only, staggered) + one pin bounce.
+   ========================================================= */
+
+/* ---------- Hero jump links ---------- */
+.jump-links {
+  list-style: none;
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+  max-width: 640px;
+}
+@media (min-width: 600px) { .jump-links { grid-template-columns: repeat(4, auto); justify-content: start; } }
+.jump-links a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-2) var(--space-4);
+  background: var(--white);
+  border: 1px solid var(--line-colour);
+  border-radius: 999px;
+  color: var(--indigo);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s var(--ease), border-color 0.2s;
+}
+.jump-links a:hover { border-color: var(--indigo); transform: translateY(-1px); }
+.jump-links svg { width: 18px; height: 18px; flex: none; color: var(--maple); }
+
+/* Keep anchored sections clear of the sticky header */
+#map, #directions, #contact, #trial { scroll-margin-top: calc(var(--header-h) + var(--space-3)); }
+
+/* ---------- Map + address ---------- */
+.access-info { display: grid; gap: var(--space-6); }
+@media (min-width: 900px) { .access-info { grid-template-columns: 0.9fr 1.1fr; align-items: center; gap: var(--space-8); } }
+.access-list {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-3) var(--space-4);
+  margin-block: var(--space-4) var(--space-5);
+}
+.access-list dt { font-weight: 700; color: var(--indigo); white-space: nowrap; }
+.access-list dd { min-width: 0; }
+.access-map {
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--line-colour);
+  background: var(--indigo-soft);
+  aspect-ratio: 4 / 3;
+}
+.access-map iframe { display: block; width: 100%; height: 100%; border: 0; }
+
+/* ---------- Route schematic ---------- */
+.route-figure { margin: 0 0 var(--space-6); }
+.route { display: block; width: 100%; height: auto; max-width: 760px; }
+.route-figure figcaption {
+  margin-top: var(--space-2);
+  font-size: var(--fs-xs);
+  color: var(--sumi-muted);
+}
+.route__bg { fill: var(--white); stroke: var(--line-colour); stroke-width: 2; }
+.route__road { fill: none; stroke: var(--indigo-soft); stroke-width: 18; stroke-linecap: round; }
+.route__station rect { fill: var(--indigo); }
+.route__rail { fill: none; stroke: var(--white); stroke-width: 4; stroke-linecap: round; }
+.route__elem rect, .route__elem path { fill: var(--season-accent-soft); stroke: var(--indigo); stroke-width: 2; stroke-linejoin: round; }
+.route__label {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 700;
+  fill: var(--indigo);
+}
+.route__label--school { fill: var(--maple-dark); }
+.route__dot { fill: var(--maple); }
+.route__pin-body { fill: var(--maple); }
+.route__pin-dot { fill: var(--white); }
+.route__pin { transform-box: fill-box; transform-origin: 50% 100%; }
+
+/* JS (access.js) adds .route--ready only when motion is allowed.
+   Without JS everything is simply visible. */
+.route--ready .route__dot {
+  opacity: 0;
+  transition: opacity 0.25s linear;
+  transition-delay: calc(var(--i, 0) * 55ms);
+}
+.route--ready .route__pin { opacity: 0; }
+.route--drawn .route__dot { opacity: 1; }
+.route--drawn .route__pin {
+  animation: pin-drop 0.7s var(--ease) both;
+  animation-delay: calc(var(--n, 29) * 55ms + 150ms);
+}
+@keyframes pin-drop {
+  0%   { opacity: 0; transform: translateY(-24px); }
+  45%  { opacity: 1; transform: translateY(0); }
+  65%  { transform: translateY(-9px); }
+  82%  { transform: translateY(0); }
+  92%  { transform: translateY(-3px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Directions ---------- */
+.directions-grid { display: grid; gap: var(--space-5); }
+@media (min-width: 768px) { .directions-grid { grid-template-columns: 1fr 1fr; } }
+.directions-steps { margin-top: var(--space-4); }
+.directions-meta { margin-top: var(--space-3); }
+.directions-meta dd { font-weight: 400; }
+
+.parking { display: grid; gap: var(--space-5); margin-top: var(--space-7); align-items: center; }
+@media (min-width: 900px) { .parking { grid-template-columns: 1.2fr 1fr; gap: var(--space-7); } }
+.parking > * { min-width: 0; }
+.parking__photos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: var(--space-3); }
+.parking__photos .ph { min-width: 0; padding: var(--space-2); font-size: var(--fs-xs); }
+.parking__title { font-size: var(--fs-lg); margin-bottom: var(--space-3); }
+.parking__text .note-list { margin-top: var(--space-4); }
+
+/* ---------- Contact ---------- */
+.contact-grid { display: grid; gap: var(--space-5); }
+@media (min-width: 600px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1000px) { .contact-grid { grid-template-columns: repeat(4, 1fr); } }
+.contact-card { align-items: flex-start; }
+.contact-card__value { margin-top: var(--space-2); font-size: var(--fs-lg); font-weight: 700; }
+.contact-card__value a { color: var(--indigo); }
+.contact-card__value--mail { font-size: var(--fs-sm); }
+.contact-card__value--mail a { white-space: normal; overflow-wrap: break-word; }
+.contact-card__note { margin-top: var(--space-2); font-size: var(--fs-xs); color: var(--sumi-muted); }
+.contact-card--line .qr-ph { width: 140px; margin-block: var(--space-4); padding: var(--space-2); font-size: var(--fs-xs); }
+.contact-card--line .btn { margin-top: auto; }
+
+/* ---------- Trial booking ---------- */
+.trial-booking { display: grid; gap: var(--space-6); align-items: start; }
+@media (min-width: 900px) { .trial-booking { grid-template-columns: 0.8fr 1.2fr; gap: var(--space-8); } }
+.trial-booking__intro > p:not(.section-head__eyebrow) { margin-top: var(--space-4); }
+.trial-booking__intro .check-list { margin-top: var(--space-4); }
+.trial-booking__steps-title { font-weight: 700; color: var(--indigo); }
+.trial-steps {
+  list-style: none;
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-2);
+  counter-reset: step;
+}
+.trial-steps li {
+  counter-increment: step;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--fs-sm);
+}
+.trial-steps li::before {
+  content: counter(step);
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--indigo);
+  color: var(--white);
+  font-family: var(--font-en);
+  font-weight: 700;
+  font-size: var(--fs-xs);
+}
+.trial-booking__tel { font-size: var(--fs-sm); }
+.trial-booking__tel a { font-weight: 700; font-size: var(--fs-md); }
+
+@media (min-width: 900px) { .trial-booking__intro { position: sticky; top: calc(var(--header-h) + var(--space-5)); } }
+
+.trial-booking__form {
+  padding: var(--space-5) var(--space-4);
+  background: var(--white);
+  border: 1px solid var(--line-colour);
+  border-top: 4px solid var(--maple);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+@media (min-width: 600px) { .trial-booking__form { padding: var(--space-6); } }
+
+.trial-form .form__row { min-width: 0; align-content: start; }
+.trial-form fieldset.form__row { margin: 0; padding: 0; border: 0; }
+.trial-form fieldset.form__row > legend { padding: 0; margin-bottom: var(--space-2); }
+.form__control--short { min-height: 96px; }
+.trial-form select.form__control { appearance: auto; }
+
+/* Gentle focus: a small maple leaf fades in beside the active label */
+.trial-form .form__label { position: relative; display: inline-block; }
+.trial-form .form__row:focus-within > .form__label::before,
+.trial-form .form__row > .form__label::before {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 0.35em;
+  width: 12px;
+  height: 12px;
+  background: var(--maple);
+  -webkit-mask: url("/assets/svg/maple-leaf.svg") center / contain no-repeat;
+  mask: url("/assets/svg/maple-leaf.svg") center / contain no-repeat;
+  opacity: 0;
+  transform: scale(0.4) rotate(-40deg);
+  transition: opacity 0.25s var(--ease), transform 0.35s var(--ease);
+}
+.trial-form .form__row:focus-within > .form__label::before { opacity: 1; transform: none; }
+.trial-form fieldset.form__row > .form__label::before { left: -18px; }
+@media (max-width: 599.98px) {
+  /* little room on the left on phones: show the leaf after the label instead */
+  .trial-form .form__row > .form__label::before,
+  .trial-form .form__row:focus-within > .form__label::before,
+  .trial-form fieldset.form__row > .form__label::before { left: auto; right: -18px; }
+}
+
+.consent__note {
+  padding: var(--space-3) var(--space-4);
+  background: var(--washi);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-xs);
+  color: var(--sumi-muted);
+}
+.consent__choice { font-weight: 700; font-size: var(--fs-sm); }
+.consent__choice input { flex: none; }
+.trial-form__submit { width: 100%; }
+@media (min-width: 600px) { .trial-form__submit { width: auto; } }
+.trial-form__submit[disabled] { opacity: 0.7; cursor: progress; }
+
+/* Success feedback */
+.trial-form .form__status--ok { animation: status-in 0.5s var(--ease) both; }
+@keyframes status-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .route--ready .route__dot, .route--ready .route__pin { opacity: 1; transition: none; animation: none; }
+  .route--drawn .route__pin { animation: none; }
+  .jump-links a:hover { transform: none; }
+  .trial-form .form__row > .form__label::before { transform: none; transition: opacity 0.2s linear; }
+  .trial-form .form__status--ok { animation: none; }
+}

@@ -1,8 +1,10 @@
 /* =========================================================
    animations.css — keyframes, reveal classes, nav underline,
    view transitions, reduced motion.
-   Phase 1 keeps this minimal; Phase 3 adds per-page motion.
-   Rule: animate only transform and opacity.
+   Rule: animate only transform and opacity. Nothing may shift
+   layout or delay text appearing. Content is readable without JS.
+   Page-specific motion lives in css/pages/*.css, each with its
+   own prefers-reduced-motion fallback.
    ========================================================= */
 
 /* ---------- Nav underline (desktop) ---------- */
@@ -27,14 +29,63 @@
   }
 }
 
-/* ---------- Scroll reveal (only when JS is running, so content is never hidden without it) ---------- */
+/* ---------- Scroll reveal (js/reveal.js) ----------
+   Only applies once main.js has added .js to <html>, so content
+   is never hidden without JavaScript. Use below the fold only. */
 .js .reveal {
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(18px);
   transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
   transition-delay: calc(var(--reveal-i, 0) * 90ms);
 }
 .js .reveal.is-visible { opacity: 1; transform: none; }
+
+/* ---------- Headline wave ([data-split], js/reveal.js) ----------
+   Characters are fully visible from the first frame; only their
+   position animates, so LCP and readability are unaffected. */
+.split-char {
+  display: inline-block;
+  animation: char-rise 0.7s var(--ease) both;
+  animation-delay: calc(var(--char-i, 0) * 45ms);
+}
+@keyframes char-rise {
+  from { transform: translateY(0.35em) rotate(4deg); }
+  to   { transform: none; }
+}
+
+/* ---------- Card lift (shared) ---------- */
+.card { transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease); }
+@media (hover: hover) {
+  .card:has(.card__link a:hover), .card--lift:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+}
+
+/* ---------- One-time pulse (NEW ribbon) ---------- */
+@keyframes pulse-once {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(1.18); }
+  70%  { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
+.ribbon-new, .hero__badge .badge { animation: pulse-once 0.9s var(--ease) 0.6s 1 both; }
+
+/* ---------- Page-to-page wipe (cross-document View Transitions) ----------
+   Browsers without support navigate normally (the fallback).
+   The header and bottom bar stay put; the page content wipes. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+
+  .site-header { view-transition-name: site-header; }
+  .bottom-bar  { view-transition-name: bottom-bar; }
+
+  ::view-transition-old(root) { animation: vt-out 0.32s var(--ease) both; }
+  ::view-transition-new(root) { animation: vt-in 0.42s var(--ease) both; }
+  html:active-view-transition-type(vt-back)::view-transition-old(root) { animation-name: vt-out-back; }
+  html:active-view-transition-type(vt-back)::view-transition-new(root) { animation-name: vt-in-back; }
+}
+@keyframes vt-out      { to   { opacity: 0; transform: translateX(-4%); } }
+@keyframes vt-in       { from { opacity: 0; transform: translateX(6%); } }
+@keyframes vt-out-back { to   { opacity: 0; transform: translateX(4%); } }
+@keyframes vt-in-back  { from { opacity: 0; transform: translateX(-6%); } }
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
@@ -43,7 +94,8 @@
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
   }
-  .btn:hover { transform: none; }
+  .btn:hover, .card:hover, .card:has(.card__link a:hover) { transform: none !important; }
   /* Keep simple fades, drop movement */
   .js .reveal { transform: none; transition: opacity 0.4s linear; }
+  .split-char { animation: none; }
 }

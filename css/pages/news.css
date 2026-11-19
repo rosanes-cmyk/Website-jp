@@ -1,0 +1,139 @@
+/* =========================================================
+   news.css — News & FAQ page (/news/ and /en/news/)
+   Signature motion (js/pages/news.js):
+   - smooth accordion: when a question opens, its answer fades
+     in and slides down a little (opacity + transform only);
+     closing is instant, so nothing animates height
+   - the NEW ribbon pulses once (css/animations.css)
+   Everything works without JS: <details> opens natively.
+   ========================================================= */
+
+/* Anchor targets clear the sticky header */
+.page-news [id] { scroll-margin-top: calc(var(--header-h) + var(--space-4)); }
+
+/* ---------- In-page jump links ---------- */
+.news-jump { margin-top: var(--space-5); }
+.news-jump ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.news-jump a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--space-4);
+  background: var(--white);
+  border: 1px solid var(--line-colour);
+  border-radius: 999px;
+  color: var(--indigo);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.news-jump a:hover { background: var(--indigo-soft); border-color: var(--indigo); }
+
+/* ---------- News posts ---------- */
+.news-posts { border-top: 0; display: grid; gap: var(--space-4); }
+.news-post {
+  padding: var(--space-5);
+  background: var(--washi);
+  border: 1px solid var(--line-colour);
+  border-radius: var(--radius);
+}
+.news-post--featured {
+  background: var(--white);
+  border-left: 4px solid var(--maple);
+  box-shadow: var(--shadow);
+}
+.news-post--slot {
+  background: transparent;
+  border-style: dashed;
+  border-color: rgb(39 64 96 / 0.25);
+}
+.news-post__date { font-family: var(--font-en); font-weight: 700; color: var(--sumi-muted); }
+.news-item__tag--campaign { background: var(--sakura-soft); color: var(--maple-dark); }
+.news-post .news-item__title { line-height: var(--lh-tight); }
+.news-post__body { margin-top: var(--space-3); }
+.news-post__body > * + * { margin-top: var(--space-2); }
+.news-post__links {
+  list-style: none;
+  margin: var(--space-4) 0 0;
+  padding: var(--space-4) 0 0;
+  border-top: 1px dashed var(--line-colour);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-5);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+}
+.news-post__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: 44px;
+}
+.news-post__links a::after {
+  content: "";
+  width: 0.45em;
+  height: 0.45em;
+  border-right: 2px solid currentColor;
+  border-top: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+/* ---------- FAQ ---------- */
+.faq .accordion__summary { line-height: var(--lh-tight); }
+.faq__answer { position: relative; }
+.faq__answer::before {
+  content: "A";
+  position: absolute;
+  left: calc(-28px - var(--space-3));
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--indigo-soft);
+  color: var(--indigo);
+  font-family: var(--font-en);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+}
+.faq__answer > * + * { margin-top: var(--space-2); }
+.faq__more { font-size: var(--fs-sm); font-weight: 700; }
+.faq__more a { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* Narrow phones: give the answer full width, A badge sits above */
+@media (max-width: 479.98px) {
+  .faq .accordion__summary { padding-left: var(--space-4); padding-right: calc(var(--space-4) + 24px); }
+  .faq .accordion__summary::after { right: var(--space-4); }
+  .faq .accordion__body { padding: 0 var(--space-4) var(--space-5) calc(var(--space-4) + 28px + var(--space-3)); }
+}
+
+/* Opening motion: news.js adds .is-opening for one run.
+   Only transform + opacity; the closed state needs no styles. */
+@keyframes faq-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: none; }
+}
+.js .faq .accordion__item.is-opening > .accordion__body > .faq__answer {
+  animation: faq-in 0.36s var(--ease) both;
+}
+.faq .accordion__item[open] { box-shadow: var(--shadow); }
+
+/* ---------- Contact panel under the FAQ ---------- */
+.faq-contact { margin-top: var(--space-6); }
+.faq-contact__title { font-size: var(--fs-lg); }
+.faq-contact p { margin-top: var(--space-3); }
+.faq-contact .btn-row { margin-top: var(--space-4); }
+
+/* ---------- Reduced motion: keep a plain fade, no movement ---------- */
+@media (prefers-reduced-motion: reduce) {
+  @keyframes faq-fade { from { opacity: 0; } to { opacity: 1; } }
+  .js .faq .accordion__item.is-opening > .accordion__body > .faq__answer {
+    animation: faq-fade 0.2s linear both;
+    /* animations.css shortens every animation to 0.01ms under reduced motion;
+       keep this one as a short plain fade (no movement) */
+    animation-duration: 0.2s !important;
+  }
+  .faq .accordion__summary::after { transition: none; }
+}

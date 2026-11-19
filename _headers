@@ -1,0 +1,22 @@
+# Netlify response headers.
+# CSS/JS/HTML have no version hash in their file names, so browsers re-check them
+# (cheap 304 responses). Images, fonts and SVGs rarely change and are cached for a week.
+# Netlify compresses text files (Brotli/gzip) automatically.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/css/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/js/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/data/*
+  X-Robots-Tag: noindex

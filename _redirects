@@ -1,0 +1,17 @@
+# Netlify redirects: old site URLs -> new pages (301 = permanent).
+# The old site was a Wix site (rqkfernandes.wixsite.com/maplesakura) with these paths.
+# They only take effect if the old domain points at this Netlify site.
+# TODO: confirm the old Maple Village School URLs (maplevillageschool.com) and add them here.
+
+/about_us        /about/      301
+/about-us        /about/      301
+/Programs        /programs/   301
+/programs-1      /programs/   301
+/Contact         /access/     301
+/contact         /access/     301
+/blank           /            301
+
+# Language shortcuts
+/ja              /            301
+/ja/*            /:splat      301
+/english         /en/         301

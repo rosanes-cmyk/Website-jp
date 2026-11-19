@@ -9,6 +9,12 @@
   var root = document.documentElement;
   root.classList.add('js');
 
+  /* ---------- Web fonts without blocking the first paint ----------
+     The Google Fonts stylesheet is linked with media="print" (downloads
+     without blocking rendering); switch it on now. System fonts show
+     until then (font-display: swap). <noscript> covers no-JS visitors. */
+  document.querySelectorAll('link[data-font-css]').forEach(function (l) { l.media = 'all'; });
+
   /* ---------- Season class on <body> ----------
      Spring: Mar–May, Summer: Jun–Aug, Autumn: Sep–Nov, Winter: Dec–Feb.
      Override for testing with ?season=autumn (also handy for screenshots). */
