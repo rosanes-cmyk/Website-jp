@@ -41,6 +41,10 @@ js/reveal.js             scroll reveals and number count-up (every page)
 js/transitions.js        page-to-page transition and prefetching (every page)
 js/petals.js             falling petals/leaves on the Home hero
 js/pages/*.js            behaviour for one page (filter, lightbox, form...)
+js/chat.js               question-button helper ("chatbot") on every page
+privacy/, en/privacy/    privacy policy (linked from the footer and the trial form)
+access/thanks/           "thank you" page shown after the trial form is sent (not indexed)
+manifest.webmanifest     home-screen icon for phones (icons in assets/og/)
 assets/svg/              logo, maple leaf, sakura petal, icon sprite (icons.svg)
 assets/og/               share image (1200x630) and logo PNGs
 assets/img/              photos (WebP) go here
@@ -69,6 +73,16 @@ Example: Kids English Club goes from ¥10,000 + tax to ¥11,000 + tax.
 The same approach works for the phone number, address, email and opening hours. The footer must be identical on every page (search engines compare it).
 
 When everything is confirmed, remove the yellow highlights by deleting `class="tbd"` spans (or the `.tbd` rule in `css/base.css`).
+
+---
+
+## Question helper (chatbot)
+
+The round **質問する / Questions** button at the bottom right of every page opens a small helper. Visitors tap a question and get an instant answer, plus buttons to book a trial or call. It has no AI and no server: nothing a visitor does is stored or sent.
+
+- **Change an answer:** edit the `QA` list in `js/chat.js`. Japanese answers are in the second list, English in the first. Keep them identical in meaning, and matching the Fees, Programs and FAQ pages.
+- **Add the LINE button:** put the LINE Official Account URL in `LINE_URL` at the top of `js/chat.js`. The "LINEで質問する / Ask on LINE" button appears automatically.
+- **Change the phone number:** edit `TEL` at the top of `js/chat.js` too.
 
 ---
 
@@ -142,6 +156,8 @@ On the Netlify dashboard, drag this whole folder onto *Sites* → *Deploy manual
 - `_headers` sends `X-Robots-Tag: noindex` on every page, so Google does not index the placeholder content. **At launch, delete that one line.**
 - `_redirects` returns "not found" for `PLAN.md`, `README.md`, `RESEARCH.md`, `netlify.toml` and `/data/`. These are internal files and stay hidden permanently. (They are still in the GitHub repository, so keep the repository private.)
 - `404.html` is the "page not found" page Netlify shows for any address that does not exist.
+- The trial form sends visitors without JavaScript to `/access/thanks/` (`/en/access/thanks/`). Visitors with JavaScript see the thank-you message on the same page.
+- The privacy policy (`/privacy/`) still has yellow placeholders: the operator's name, how long data is kept, and the effective date.
 
 **After the first deploy**
 

@@ -9,6 +9,7 @@
   <meta name="theme-color" content="#274060">
   <link rel="icon" href="/assets/svg/maple-leaf.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/og/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
   <link rel="canonical" href="https://maplesakuraschool.com/en/access/"><!-- TODO: confirm domain -->
   <link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/access/">
   <link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/access/">
@@ -41,6 +42,7 @@
   <script src="/js/main.js" defer></script>
   <script src="/js/reveal.js" defer></script>
   <script src="/js/transitions.js" defer></script>
+  <script src="/js/chat.js" defer></script>
   <script src="/js/pages/access.js" defer></script>
 
   <!-- TODO: confirm structured data (hours, geo, sameAs) once the owner confirms -->
@@ -370,7 +372,7 @@
         </div>
 
         <div class="trial-booking__form">
-          <form class="form trial-form" name="trial" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/en/access/?sent=1#trial"
+          <form class="form trial-form" name="trial" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/en/access/thanks/"
                 data-msg-ok="Thank you for your request! We will check the details and get back to you."
                 data-msg-required="Please fill in this field."
                 data-msg-email="Please enter a valid email address (e.g. name@example.com)."
@@ -447,8 +449,8 @@
             </div>
 
             <div class="form__row consent">
-              <!-- TODO: confirm privacy wording; link a privacy policy page once it exists -->
-              <p class="consent__note" id="f-consent-note">We use the personal information you enter only to arrange your trial lesson and answer your questions. We never share it with third parties without your consent.</p>
+              <!-- TODO: confirm privacy wording -->
+              <p class="consent__note" id="f-consent-note">We use the personal information you enter only to arrange your trial lesson and answer your questions. We never share it with third parties without your consent. See our <a href="/en/privacy/">privacy policy</a>.</p>
               <label class="form__choice consent__choice">
                 <input type="checkbox" id="f-consent" name="consent" value="Agreed" required
                        aria-describedby="f-consent-note f-consent-err" data-error="f-consent-err"
@@ -507,6 +509,7 @@
             <li><a href="/en/gallery/">Gallery</a></li>
             <li><a href="/en/access/">Access &amp; Contact</a></li>
             <li><a href="/en/news/">News &amp; FAQ</a></li>
+            <li><a href="/en/privacy/">Privacy Policy</a></li>
             <li><a href="/" hreflang="ja" lang="ja">日本語</a></li>
           </ul>
         </nav>

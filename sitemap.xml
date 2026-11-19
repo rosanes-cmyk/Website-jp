@@ -113,4 +113,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/news/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://maplesakuraschool.com/news/"/>
   </url>
+  <url>
+    <loc>https://maplesakuraschool.com/privacy/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maplesakuraschool.com/privacy/"/>
+  </url>
+  <url>
+    <loc>https://maplesakuraschool.com/en/privacy/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maplesakuraschool.com/privacy/"/>
+  </url>
 </urlset>

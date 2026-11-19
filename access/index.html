@@ -9,6 +9,7 @@
   <meta name="theme-color" content="#274060">
   <link rel="icon" href="/assets/svg/maple-leaf.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/og/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
   <link rel="canonical" href="https://maplesakuraschool.com/access/"><!-- TODO: confirm domain -->
   <link rel="alternate" hreflang="ja" href="https://maplesakuraschool.com/access/">
   <link rel="alternate" hreflang="en" href="https://maplesakuraschool.com/en/access/">
@@ -41,6 +42,7 @@
   <script src="/js/main.js" defer></script>
   <script src="/js/reveal.js" defer></script>
   <script src="/js/transitions.js" defer></script>
+  <script src="/js/chat.js" defer></script>
   <script src="/js/pages/access.js" defer></script>
 
   <!-- TODO: confirm structured data (hours, geo, sameAs) once the owner confirms -->
@@ -370,7 +372,7 @@
         </div>
 
         <div class="trial-booking__form">
-          <form class="form trial-form" name="trial" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/access/?sent=1#trial"
+          <form class="form trial-form" name="trial" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/access/thanks/"
                 data-msg-ok="お申し込みありがとうございます。内容を確認のうえ、教室からご連絡いたします。"
                 data-msg-required="入力してください。"
                 data-msg-email="メールアドレスの形式で入力してください（例：name@example.com）。"
@@ -448,8 +450,8 @@
             </div>
 
             <div class="form__row consent">
-              <!-- TODO: confirm privacy wording; link a privacy policy page once it exists -->
-              <p class="consent__note" id="f-consent-note">ご入力いただいた個人情報は、体験レッスンのご案内とお問い合わせへの回答のためにのみ使用し、ご本人の同意なく第三者に提供することはありません。</p>
+              <!-- TODO: confirm privacy wording -->
+              <p class="consent__note" id="f-consent-note">ご入力いただいた個人情報は、体験レッスンのご案内とお問い合わせへの回答のためにのみ使用し、ご本人の同意なく第三者に提供することはありません。詳しくは<a href="/privacy/">プライバシーポリシー</a>をご覧ください。</p>
               <label class="form__choice consent__choice">
                 <input type="checkbox" id="f-consent" name="consent" value="同意する" required
                        aria-describedby="f-consent-note f-consent-err" data-error="f-consent-err"
@@ -508,6 +510,7 @@
             <li><a href="/gallery/">ギャラリー</a></li>
             <li><a href="/access/">アクセス・お問い合わせ</a></li>
             <li><a href="/news/">お知らせ・FAQ</a></li>
+            <li><a href="/privacy/">プライバシーポリシー</a></li>
             <li><a href="/en/" hreflang="en" lang="en">English</a></li>
           </ul>
         </nav>
