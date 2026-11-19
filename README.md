@@ -128,19 +128,27 @@ The site deploys as plain files: no build command.
 **Option A: connect GitHub (recommended, updates automatically)**
 
 1. Sign in at <https://app.netlify.com> → *Add new site* → *Import an existing project* → GitHub → choose `Website-jp`.
-2. Build command: *(leave empty)*. Publish directory: `/` (the repository root).
-3. Deploy. Every push to `main` now redeploys the site automatically.
+2. Branch to deploy: `main`. Netlify reads `netlify.toml` (no build command, publish the repository root), so leave the build settings empty.
+3. **Before the first deploy:** *Site configuration → Forms →* **Enable form detection**. On new Netlify sites this is off by default; without it the trial form loses submissions. (If you already deployed, enable it and click *Deploys → Trigger deploy*.)
+4. Deploy. Every push to `main` now redeploys the site automatically.
+5. Test the form: send a test booking from `/access/` and `/en/access/` and check that it appears under *Forms → trial*.
 
 **Option B: drag and drop**
 
 On the Netlify dashboard, drag this whole folder onto *Sites* → *Deploy manually*.
 
+**What is hidden while the site is pre-launch**
+
+- `_headers` sends `X-Robots-Tag: noindex` on every page, so Google does not index the placeholder content. **At launch, delete that one line.**
+- `_redirects` returns "not found" for `PLAN.md`, `README.md`, `RESEARCH.md`, `netlify.toml` and `/data/`. These are internal files and stay hidden permanently. (They are still in the GitHub repository, so keep the repository private.)
+- `404.html` is the "page not found" page Netlify shows for any address that does not exist.
+
 **After the first deploy**
 
 - **Domain:** *Domain management* → add `maplesakuraschool.com` (confirm who controls the domain first). If you use a different domain, replace `https://maplesakuraschool.com` everywhere (canonical links, hreflang, Open Graph, structured data, `sitemap.xml`, `robots.txt`).
 - **Trial form:** the booking form on `/access/` uses **Netlify Forms**. Submissions appear under *Forms* in the Netlify dashboard; set up email notifications in *Forms → Form notifications*. (The form only works on Netlify, not on the local preview.)
-- **Redirects:** `_redirects` sends the old Wix page addresses to the new pages. Add any old Maple Village School addresses there.
-- **Search engines:** submit `https://maplesakuraschool.com/sitemap.xml` in Google Search Console.
+- **Redirects:** `_redirects` contains rules for the old Wix page addresses, but they only work for a domain that points at Netlify. A `wixsite.com` address can't be pointed at Netlify, so for the old Wix site, add a notice there that links to the new site. Add old Maple Village School addresses to `_redirects` only if that domain is recovered.
+- **Search engines (launch day only):** after removing the noindex line, submit `https://maplesakuraschool.com/sitemap.xml` in Google Search Console.
 - **Google Business Profile:** make sure the name, address and phone there match the website footer exactly.
 
 ---

@@ -3,7 +3,10 @@
 # (cheap 304 responses). Images, fonts and SVGs rarely change and are cached for a week.
 # Netlify compresses text files (Brotli/gzip) automatically.
 
+# PRE-LAUNCH: the X-Robots-Tag line below keeps search engines from indexing placeholder content.
+# Delete that one line when the owner has confirmed the facts and the domain is connected.
 /*
+  X-Robots-Tag: noindex
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
