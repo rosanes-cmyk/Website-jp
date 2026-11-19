@@ -99,6 +99,7 @@ ul[role="list"], ol[role="list"] { list-style: none; padding: 0; }
 
 body {
   min-height: 100vh;
+  min-height: 100svh;
   background: var(--washi);
   color: var(--sumi);
   font-family: var(--font-body);

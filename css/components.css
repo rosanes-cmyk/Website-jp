@@ -22,17 +22,22 @@
   transition: background-color 0.2s, color 0.2s, transform 0.2s var(--ease), box-shadow 0.2s;
 }
 .btn svg { width: 20px; height: 20px; flex: none; }
-.btn:hover { transform: translateY(-1px); }
 .btn:active { transform: none; }
 
 .btn--primary { background: var(--maple); color: var(--white); box-shadow: 0 4px 14px rgb(200 68 43 / 0.28); }
-.btn--primary:hover { background: var(--maple-dark); color: var(--white); }
-
 .btn--outline { background: var(--white); color: var(--indigo); border-color: var(--indigo); }
-.btn--outline:hover { background: var(--indigo); color: var(--white); }
-
 .btn--line { background: var(--line-green); color: var(--sumi); }
-.btn--line:hover { color: var(--sumi); filter: brightness(0.95); }
+
+/* Hover styles only on devices with a real pointer, so a tapped button on a
+   phone doesn't stay "stuck" in its hover look. Taps get :active instead. */
+@media (hover: hover) {
+  .btn:hover { transform: translateY(-1px); }
+  .btn--primary:hover { background: var(--maple-dark); color: var(--white); }
+  .btn--outline:hover { background: var(--indigo); color: var(--white); }
+  .btn--line:hover { color: var(--sumi); filter: brightness(0.95); }
+}
+.btn--primary:active { background: var(--maple-dark); }
+.btn--outline:active { background: var(--indigo); color: var(--white); }
 
 .btn--small { min-height: 44px; padding-inline: var(--space-4); font-size: var(--fs-sm); }
 .btn--large { min-height: 56px; padding-inline: var(--space-6); font-size: var(--fs-md); }
@@ -326,7 +331,7 @@
   transition: transform 0.3s var(--ease);
 }
 .accordion__item[open] > .accordion__summary::after { transform: rotate(225deg); }
-.accordion__summary:hover { background: var(--season-accent-soft); }
+@media (hover: hover) { .accordion__summary:hover { background: var(--season-accent-soft); } }
 .accordion__body { padding: 0 var(--space-5) var(--space-5) calc(var(--space-5) + 28px + var(--space-3)); }
 
 /* ---------- Forms ---------- */
@@ -381,15 +386,19 @@ textarea.form__control { min-height: 140px; resize: vertical; }
 .lightbox {
   width: min(92vw, 1000px);
   max-height: 90vh;
+  max-height: 90dvh;
+  overscroll-behavior: contain;
   padding: 0;
   border: 0;
   border-radius: var(--radius);
   background: var(--washi);
   box-shadow: var(--shadow-lift);
 }
+/* Stop the page behind an open lightbox from scrolling (iOS/Android) */
+html:has(dialog.lightbox[open]) { overflow: hidden; }
 .lightbox::backdrop { background: rgb(20 24 32 / 0.8); }
 .lightbox__figure { margin: 0; }
-.lightbox__media > * { max-height: 75vh; width: 100%; object-fit: contain; }
+.lightbox__media > * { max-height: 75vh; max-height: 75dvh; width: 100%; object-fit: contain; }
 .lightbox__caption { padding: var(--space-3) var(--space-5); font-size: var(--fs-sm); }
 .lightbox__close, .lightbox__nav {
   position: absolute;
@@ -448,8 +457,10 @@ textarea.form__control { min-height: 140px; resize: vertical; }
   font-size: var(--fs-sm);
 }
 .chip[aria-pressed="true"] { background: var(--indigo); color: var(--white); }
-.chip:hover { background: var(--indigo-soft); }
-.chip[aria-pressed="true"]:hover { background: var(--indigo); }
+@media (hover: hover) {
+  .chip:hover { background: var(--indigo-soft); }
+  .chip[aria-pressed="true"]:hover { background: var(--indigo); }
+}
 
 /* ---------- News list ---------- */
 .news-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-colour); }

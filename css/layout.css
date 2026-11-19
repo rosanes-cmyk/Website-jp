@@ -312,9 +312,15 @@
   }
   .bottom-bar__item svg { width: 22px; height: 22px; }
   .bottom-bar__item--trial { background: var(--maple); color: var(--white); }
-  .bottom-bar__item--trial:hover { background: var(--maple-dark); color: var(--white); }
   .bottom-bar__item--line { background: var(--line-green); color: var(--sumi); }
-  .bottom-bar__item--line:hover { color: var(--sumi); filter: brightness(0.95); }
   .bottom-bar__item--tel { background: var(--white); color: var(--indigo); }
-  .bottom-bar__item--tel:hover { color: var(--indigo); background: var(--indigo-soft); }
+  /* Pressed feedback for taps; hover look only where a mouse exists */
+  .bottom-bar__item--trial:active { background: var(--maple-dark); }
+  .bottom-bar__item--line:active { filter: brightness(0.95); }
+  .bottom-bar__item--tel:active { background: var(--indigo-soft); }
+  @media (hover: hover) {
+    .bottom-bar__item--trial:hover { background: var(--maple-dark); color: var(--white); }
+    .bottom-bar__item--line:hover { color: var(--sumi); filter: brightness(0.95); }
+    .bottom-bar__item--tel:hover { color: var(--indigo); background: var(--indigo-soft); }
+  }
 }
